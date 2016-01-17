@@ -255,6 +255,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/16/Android开发笔记1/" itemprop="url">
+                  Android开发笔记1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-16T23:50:24+08:00" content="2016-01-16">
+              2016-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/16/Android开发笔记1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/16/Android开发笔记1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="u8111_u6B8B_u9519_u8BEF1"><a href="#u8111_u6B8B_u9519_u8BEF1" class="headerlink" title="脑残错误1"></a>脑残错误1</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String[] tempCity=<span class="keyword">new</span> String[]&#123;<span class="string">"北京"</span>, <span class="string">"天津"</span>, <span class="string">"上海"</span>, <span class="string">"广州"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CityChoosePopupWindow</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context,</span><br><span class="line">                LayoutInflater.from(context).inflate(R.layout.popupwindow_citychoose, <span class="keyword">null</span>),</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT,</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initViews</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">        Log.d(mLogName,tempCity[<span class="number">0</span>]);<span class="comment">//提示tempCity为null</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BasePopupWindow</span><span class="params">(Context context,View contentView, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(contentView, width, height, <span class="keyword">true</span>);</span><br><span class="line">    mContentView = contentView;</span><br><span class="line">    mContext=context;</span><br><span class="line">    setBackgroundDrawable(<span class="keyword">new</span> BitmapDrawable());</span><br><span class="line">    initViews();</span><br><span class="line">    initEvents();</span><br><span class="line">    init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>很简单的错误,但是当时蒙B了还是找了一阵子,后来才看到,这个class[CityChoosePopupwindow]是继承于自己的BasePopupwindow,进入CityChoosePopupwindow的构造方法,然后进入父类的构造方法,然后构造方法调用了<strong>抽象方法:initViews()</strong>,而这个时候子类全局变量还没有初始化</p>
+</blockquote>
+<h2 id="Java_u521D_u59CB_u5316_u987A_u5E8F_uFF08_u8F6C_u6765_u7684_uFF09"><a href="#Java_u521D_u59CB_u5316_u987A_u5E8F_uFF08_u8F6C_u6765_u7684_uFF09" class="headerlink" title="Java初始化顺序（转来的）"></a>Java初始化顺序（转来的）</h2><blockquote>
+<p>1在new B一个实例时首先要进行类的装载。（类只有在使用New调用创建的时候才会被java类装载器装入）<br>2，在装载类时，先装载父类A，再装载子类B<br>3，装载父类A后，完成静态动作（包括静态代码和变量，它们的级别是相同的，安装代码中出现的顺序初始化）<br>4，装载子类B后，完成静态动作<br><em>类装载完成，开始进行实例化</em><br>1，在实例化子类B时，先要实例化父类A<br>2，实例化父类A时，先成员实例化（非静态代码）<br>3，父类A的构造方法<br>4，子类B的成员实例化（非静态代码）<br>5，子类B的构造方法</p>
+</blockquote>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/15/前言/" itemprop="url">
                   前言
                 </a>
@@ -317,427 +427,8 @@
             
               <p>  <strong>这是我的博客的第一篇文章.</strong></p>
 <p>  很久之前就有写博客的想法了,不过总是因为各种原因没有去做。记得大约在去年，还在CSDN和开源中国之间徘徊过,后来手机用简书的时候,也考虑过在简书上开一个自己的博客,可惜这些想法最后都没有结果。<br>  最后之所以准备开这个博客，一方面是好朋友给我推荐了Github+Hexo，二来是静态博客最近确实很火。加上新的一年到了，也准备给自己定点计划和目标，所以才强迫自己开了这个博客。</p>
-<p>  至于www.3toptop.top这个域名，本来是想买个自己喜欢的词缀的顶级域名的，可惜都被抢注了，然后脑洞打开，就选了这个域名…然后还起了这个很中二的名字（做数据统计，域名解析的时候，都是叫3-Top），然后就因为当时的主题的样式的标题上下有两道横线，然后感觉不喜欢，就被抛弃了。。。。。<br>  <img src="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png" alt="被嫌弃的双横线"><br>  虽然俺是程序猿，但程序猿也是有生活的好吗？加上这个博客应该是不会被搜索引擎收到的，所以我想记录的东西都可以放到这里，技术分享，学习笔记，生活经历，逗比玩法什么的，都会尝试去写。</p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/09/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-09T12:20:20+08:00" content="2016-01-09">
-              2016-01-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/生活日记/" itemprop="url" rel="index">
-                    <span itemprop="name">生活日记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/09/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/09/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br><span class="line">@ hexofjdkas------dsadasdsa</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/09/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/07/image/" itemprop="url">
-                  image
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-07T18:46:50+08:00" content="2016-01-07">
-              2016-01-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/图片测试/" itemprop="url" rel="index">
-                    <span itemprop="name">图片测试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/07/image/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/07/image/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>分段测试:</p>
-<blockquote>
-<p>dsadsadsa<br>dsadas<br>dsadsa</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th style="text-align:right">价格</th>
-<th style="text-align:center">数量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>计算机</td>
-<td style="text-align:right">$1600</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td>手机</td>
-<td style="text-align:right">$12</td>
-<td style="text-align:center">12</td>
-</tr>
-<tr>
-<td>管线</td>
-<td style="text-align:right">$1</td>
-<td style="text-align:center">234</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>[ ] <strong>Cmd Markdown 开发</strong><ul>
-<li>[ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</li>
-<li>[ ] 支持以 PDF 格式导出文稿</li>
-<li>[x] 新增Todo列表功能 <a href="https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments" target="_blank" rel="external">语法参考</a></li>
-<li>[x] 改进 LaTex 功能<ul>
-<li>[x] 修复 LaTex 公式渲染问题</li>
-<li>[x] 新增 LaTex 公式编号功能 <a href="http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers" target="_blank" rel="external">语法参考</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>[ ] <strong>七月旅行准备</strong><ul>
-<li>[ ] 准备邮轮上需要携带的物品</li>
-<li>[ ] 浏览日本免税店的物品</li>
-<li>[x] 购买蓝宝石公主号七月一日的船票</li>
-</ul>
-</li>
-</ul>
-<p>#瞒天过海</p>
-<p>##围魏救赵</p>
-<p>###李代桃僵</p>
-<h4 id="u91DC_u5E95_u62BD_u85AA"><a href="#u91DC_u5E95_u62BD_u85AA" class="headerlink" title="釜底抽薪"></a>釜底抽薪</h4><h5 id="u7A7A_u57CE_u8BA1"><a href="#u7A7A_u57CE_u8BA1" class="headerlink" title="空城计"></a>空城计</h5><h6 id="u7F8E_u4EBA_u8BA1"><a href="#u7F8E_u4EBA_u8BA1" class="headerlink" title="美人计"></a>美人计</h6><ul>
-<li>info</li>
-<li>all</li>
-<li>write</li>
-</ul>
-<ul>
-<li>一</li>
-</ul>
-<ul>
-<li>123131</li>
-<li>312312</li>
-</ul>
-<ul>
-<li>二</li>
-</ul>
-<ul>
-<li>3123131</li>
-</ul>
-<ol>
-<li>info</li>
-<li><p>dsadas</p>
-<p> function stlosdsa()</p>
-<pre><code>return void;
-</code></pre><p> end</p>
-</li>
-</ol>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">void</span><span class="params">()</span></span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">nil</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<pre><code>这个是一个快
-
-dsadasdsa
-</code></pre><p>链接测试:<br>这是链接:<a href="http://www.baidu.com" target="_blank" rel="external">link</a></p>
-<p>图片测试:<br><img src="http://7xpw3n.com1.z0.glb.clouddn.com/11.jpg" alt="图片测试-光碟"></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/06/my-first-blog/" itemprop="url">
-                  my first blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-06T22:16:39+08:00" content="2016-01-06">
-              2016-01-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/扯淡杂文/" itemprop="url" rel="index">
-                    <span itemprop="name">扯淡杂文</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/扯淡杂文/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/06/my-first-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/06/my-first-blog/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>Welcome to my blog,this is my blog:<a href="http://3toptop.top" target="_blank" rel="external">点我</a></p>
-<p>现在测试一些样式:</p>
-<ul>
-<li>黄金脆皮鸡</li>
-<li>吮指原味鸡</li>
-</ul>
-<hr>
-<ul>
-<li>大鸡排</li>
-<li>大鸡腿</li>
-</ul>
-<hr>
-<blockquote>
-<p>问世间情为何物,圣人曰:废物</p>
-</blockquote>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readOnly</span><span class="params">( t )</span></span></span><br><span class="line"><span class="keyword">local</span> proxy=&#123;&#125;</span><br><span class="line"><span class="keyword">local</span> mt=&#123;</span><br><span class="line">    __index=t,</span><br><span class="line">    __newindex=<span class="function"><span class="keyword">function</span> <span class="params">( t,k,v )</span></span></span><br><span class="line">        <span class="built_in">error</span>(<span class="string">"attempt to update a read-only table"</span>,<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">setmetatable</span>(proxy,mt)</span><br><span class="line"><span class="keyword">return</span> proxy</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">days=readOnly&#123;<span class="string">"Sun"</span>,<span class="string">"Mon"</span>,<span class="string">"Tue"</span>,<span class="string">"Wed"</span>,<span class="string">"Thu"</span>,<span class="string">"Fri"</span>,<span class="string">"Sat"</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(days[<span class="number">1</span>])</span><br><span class="line"><span class="comment">-- days[2]="NODAY"</span></span><br></pre></td></tr></table></figure>
+<p>  至于www.3toptop.top这个域名，本来是想买个自己喜欢的词缀的顶级域名的，可惜都被抢注了，然后脑洞打开，就选了这个域名…然后还起了这个很中二的名字（做数据统计，域名解析的时候，都是叫3-Top），然后就因为当时的主题的样式的标题上下有两道横线，然后感觉不喜欢，就被抛弃了。。。。。</p>
+<p>  <img src="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png" alt="被嫌弃的双横线"><br>  虽然俺是程序猿，但程序猿也是有生活的好吗？加上这个博客应该是不会被搜索引擎收到的，所以我想记录的东西都可以放到这里，技术分享，学习笔记，生活经历，逗比玩法什么的，都会尝试去写。</p>
 
             
           </span>
@@ -801,21 +492,21 @@ dsadasdsa
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
