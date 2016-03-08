@@ -313,14 +313,12 @@
 <p>大约就是这个意思:RxJava是一个通过观察队列实现的异步的,基于事件的在JVM的库</p>
 <hr>
 <h4 id="u5173_u4E8EReactiveX"><a href="#u5173_u4E8EReactiveX" class="headerlink" title="关于ReactiveX"></a>关于ReactiveX</h4><p>Rx = Observables + LINQ + Schedulers。</p>
-<p>#####使用观察者模式</p>
-<ul>
+<h5 id="u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="使用观察者模式"></a>使用观察者模式</h5><ul>
 <li>创建：Rx可以方便的创建事件流和数据流</li>
 <li>组合：Rx使用查询式的操作符组合和变换数据流</li>
 <li>监听：Rx可以订阅任何可观察的数据流并执行操作</li>
 </ul>
-<p>#####简化代码</p>
-<ul>
+<h5 id="u7B80_u5316_u4EE3_u7801"><a href="#u7B80_u5316_u4EE3_u7801" class="headerlink" title="简化代码"></a>简化代码</h5><ul>
 <li>函数式风格：对可观察数据流使用无副作用的输入输出函数，避免了程序里错综复杂的状态 简化代码：Rx的操作符通通常可以将复杂的难题简化为很少的几行代码</li>
 <li>异步错误处理：传统的try/catch没办法处理异步计算，Rx提供了合适的错误处理机制</li>
 <li>轻松使用并发：Rx的Observables和Schedulers让开发者可以摆脱底层的线程同步和各种并发问题</li>
