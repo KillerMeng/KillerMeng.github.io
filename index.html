@@ -223,15 +223,6 @@
 
     
     
-      
-      
-        
-        
-        
-      
-
-      
-    
 
     
       
@@ -321,7 +312,7 @@
 </blockquote>
 <p>大约就是这个意思:RxJava是一个通过观察队列实现的异步的,基于事件的在JVM的库</p>
 <hr>
-<h4 id="u5173_u4E8EReactiveX"><a href="#u5173_u4E8EReactiveX" class="headerlink" title="关于ReactiveX"></a>关于ReactiveX</h4><p>Rx = Observables + LINQ + Schedulers。</p>
+<h3 id="u5173_u4E8EReactiveX"><a href="#u5173_u4E8EReactiveX" class="headerlink" title="关于ReactiveX"></a>关于ReactiveX</h3><p>Rx = Observables + LINQ + Schedulers。</p>
 <h5 id="u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="使用观察者模式"></a>使用观察者模式</h5><ul>
 <li>创建：Rx可以方便的创建事件流和数据流</li>
 <li>组合：Rx使用查询式的操作符组合和变换数据流</li>
@@ -333,13 +324,143 @@
 <li>轻松使用并发：Rx的Observables和Schedulers让开发者可以摆脱底层的线程同步和各种并发问题</li>
 </ul>
 <hr>
-<h4 id="u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="概念 扩展的观察者模式"></a>概念 扩展的观察者模式</h4><p>观察者模式就不用多说了,大家都懂的,android中最常见的就是view.setOnClickListener().不过这里的观察者,通过注册(register)或者订阅(Subscribe)的方式实现.<br>RxJava 的观察者模式有是个基本的状态</p>
+<h3 id="u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="概念 扩展的观察者模式"></a>概念 扩展的观察者模式</h3><p>观察者模式就不用多说了,大家都懂的,android中最常见的就是view.setOnClickListener().不过这里的观察者,通过注册(register)或者订阅(Subscribe)的方式实现.<br>RxJava 的观察者模式有是个基本的状态</p>
 <ul>
 <li>Observable(可观察者)</li>
 <li>Observer(观察者)</li>
 <li>subscribe(订阅)</li>
 <li>事件</li>
 </ul>
+<p>不同意传统的观察者模式,onNext()[onClick()/onEvent()]这里增加两个:</p>
+<ul>
+<li>onCompleted()</li>
+<li>onError()</li>
+</ul>
+<p>onCompleted():事件队列完成,RxJava不仅把每个事件都单独处理,还把他们当成一个队列处理,当不再有新的onNext()出现的时候,就得调用onCompleted()</p>
+<p>onError():事件队列异常,onError会触发,同时队列自动终止,不允许再有事件发出</p>
+<p>onCompleted()和onError()是互斥的.</p>
+<p><img src="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png" alt="此处输入图片的描述"></p>
+<h3 id="u5B9E_u73B0"><a href="#u5B9E_u73B0" class="headerlink" title="实现"></a>实现</h3><ol>
+<li>创建Observer(观察者)</li>
+<li>创建Observable(被观察者)</li>
+<li>创建Subscribe(订阅)</li>
+</ol>
+<h4 id="Observer_28_u89C2_u5BDF_u8005_29"><a href="#Observer_28_u89C2_u5BDF_u8005_29" class="headerlink" title="Observer(观察者)"></a>Observer(观察者)</h4><p>观察者决定事件触发的时候会有这么样的行为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Observer&lt;String&gt; observer = <span class="keyword">new</span> Observer&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Item: "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Completed!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Error!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/29/关于梦想-关于现实/" itemprop="url">
+                  关于梦想,关于现实
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-02-29T23:51:32+08:00" content="2016-02-29">
+              2016-02-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/29/关于梦想-关于现实/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/关于梦想-关于现实/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>  <strong>一个醉酒的不眠夜,想和自己说说话.</strong></p>
+<p>当初开这个博客的时候,是想以技术博客为主的.然而两个月过去了,发现自己还是当初的自己,每天还是习惯在笔记本上写写花花,而这里嫣然成了一个我记小技巧笔记的地方.</p>
+<p>而我今天更想和自己说说话,在这个安静的地方.</p>
+<p>他们说今天是2月29,他们说想看到四年以后一个更好的自己,他们说了太多太多,或矫情,或BB,或文艺,或不着边际.</p>
+<p>我什么也没说,其实想祝两个好朋友生日快乐.</p>
+<p>其中的一个过生日的好朋友,马上也要去大帝都了,恍惚间发现周围已经走的没人了,他们也在调侃我,让我去大帝都,去大魔都,其实我内心根本就不想去.不过还是衷心的祝福他们,毕竟舞台,还是大点好.晚上匆匆忙忙的吃了个火锅,晕晕乎乎的喝了点啤酒,然后又求迷杏眼的喝了杯咖啡,然后又匆匆忙忙的回家.</p>
+<p>说说其他的吧,如果在家吃饭,妈妈会给我夹吃的,说她不爱吃,然我吃.我会不知道是妈妈真的不爱吃,还是不舍得,想让我吃.朋友,兄弟相处之道也是如此,很多时候,我不知道朋友做的事情,是为了我,还是出于自己的本心.虽然知道人与人相处就是这样,但是还是很奢求能有一两个可以说真心话,去掉大脑过滤说话的朋友,不过好像不可能遇到.</p>
+<p>再说说年龄,这几天,面试了很多工程师,他们其中有很多人,有多年的工作经验,虽然水平不敢恭维,但是还是希望很高的薪资,就是这样,生活不易,且加油且奋斗吧.</p>
+<p>再说说自己吧,经常会调侃,经常会瞎扯,会说自己想娶2个媳妇,想啪啪啪黑人,想要皮裤妹子.其实如果真心让我说,我也不知道我想要什么,或许,只是内心的怦然心动,加上大脑短路的决定,加上赌场赌徒的心态吧.女孩,曾几何时,已经成了奢侈品.自己一个人,回窃喜,会狂欢.</p>
+<p>在说说创业,从当初的雄心壮志,到现在的且行且珍惜,在路上,就继续吧,终究是要走的,仅此而已.父母的养育,兄弟的付出,女人的陪伴,都是辜负不起的,如果输,就输到低吧.</p>
+<p>再说说生活,每天写代码,听音乐,看天空,就是这样,房东的功放,自己败的圈铁耳机,还有launchpad.我觉得挺好的,至少,我还能快乐起来.</p>
+<p>再说说计划,手头的任务甩不完,接手的工程师招不到,明天开始,尝试下双倍工作吧,把app和游戏同时启动,试试看.</p>
+<p>眼睛不舒服,去睡觉了</p>
 
             
           </span>
