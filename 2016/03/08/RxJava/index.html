@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,源码," />
+  <meta name="keywords" content="android,框架," />
 
 
 
@@ -65,8 +65,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
 RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library for composing asynchronous and event-based programs by using observable sequences.
 
 大约就是这个意思:RxJ">
-<meta property="og:image" content="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png">
-<meta property="og:updated_time" content="2016-03-11T11:54:24.000Z">
+<meta property="og:updated_time" content="2016-03-21T16:29:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava">
 <meta name="twitter:description" content="RxJava,一个大家最近吵的很火热的词.
@@ -270,8 +269,8 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/源码/" itemprop="url" rel="index">
-                    <span itemprop="name">源码</span>
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
                   </a>
                 </span>
 
@@ -324,7 +323,10 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
 <li>轻松使用并发：Rx的Observables和Schedulers让开发者可以摆脱底层的线程同步和各种并发问题</li>
 </ul>
 <hr>
-<h3 id="u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="概念 扩展的观察者模式"></a>概念 扩展的观察者模式</h3><p>观察者模式就不用多说了,大家都懂的,android中最常见的就是view.setOnClickListener().不过这里的观察者,通过注册(register)或者订阅(Subscribe)的方式实现.<br>RxJava 的观察者模式有是个基本的状态</p>
+<h3 id="u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="观察者模式"></a>观察者模式</h3><p>传统的观察者模式中,例如:监视.<br>在一个地方警察蹲点看小偷,这里警察就是观察者,小偷就是被观察者,警察目不转睛,不停的看着小偷的一举一动,直到小偷开始作案.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> state=<span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">while</span>(state)&#123;</span><br><span class="line">    <span class="comment">//TODO 看小偷是否偷东西</span></span><br><span class="line">    <span class="keyword">if</span>(小偷开始偷)&#123;</span><br><span class="line">        sleep(<span class="number">10</span>);</span><br><span class="line">        state=<span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">//TODO 执行抓捕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>程序中的观察者模式,采用注册/订阅的模式.</p>
+<h3 id="u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="概念 扩展的观察者模式"></a>概念 扩展的观察者模式</h3><p>观察者模式就不用多说了,大家都懂的,android中最常见的就是view.setOnClickListener().不过这里的观察者,通过注册(register)或者订阅(Subscribe)的方式实现.</p>
+<p>RxJava 的观察者模式有是个基本的状态</p>
 <ul>
 <li>Observable(可观察者)</li>
 <li>Observer(观察者)</li>
@@ -336,16 +338,37 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
 <li>onCompleted()</li>
 <li>onError()</li>
 </ul>
-<p>onCompleted():事件队列完成,RxJava不仅把每个事件都单独处理,还把他们当成一个队列处理,当不再有新的onNext()出现的时候,就得调用onCompleted()</p>
-<p>onError():事件队列异常,onError会触发,同时队列自动终止,不允许再有事件发出</p>
+<p>onCompleted():事件队列完成,RxJava不仅把每个事件都单独处理,还把他们当成<strong>一个队列</strong>处理,当不再有新的onNext()出现的时候,就得调用onCompleted()</p>
+<p>onError():事件队列异常,onError会触发,同时队列<strong>自动终止</strong>,不允许再有事件发出</p>
 <p>onCompleted()和onError()是互斥的.</p>
-<p><img src="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png" alt="此处输入图片的描述"></p>
 <h3 id="u5B9E_u73B0"><a href="#u5B9E_u73B0" class="headerlink" title="实现"></a>实现</h3><ol>
 <li>创建Observer(观察者)</li>
 <li>创建Observable(被观察者)</li>
 <li>创建Subscribe(订阅)</li>
 </ol>
 <h4 id="Observer_28_u89C2_u5BDF_u8005_29"><a href="#Observer_28_u89C2_u5BDF_u8005_29" class="headerlink" title="Observer(观察者)"></a>Observer(观察者)</h4><p>观察者决定事件触发的时候会有这么样的行为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Observer&lt;String&gt; observer = <span class="keyword">new</span> Observer&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Item: "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Completed!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Error!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>除了 Observer 接口之外，RxJava 还内置了一个实现了 Observer 的抽象类：Subscriber。 Subscriber 对 Observer 接口进行了一些扩展，但他们的基本使用方式是完全一样的.</p>
+<p>实质上,在RxJava中,Observer也总是会被转成Subscriber.</p>
+<p>他们的区别:</p>
+<ol>
+<li>Subscriber有新增加的方法onStart(),它会执行在subscribe刚开始,这个时候可以做准备工作,比如数据初始化.但是注意,subscribe会执行在任何线程,所以要操作UI线程的东西,比如弹出加载的dialog之类的,是不可以的.除非使用doOnSubscribe()方法.</li>
+<li>unsubscribe()这个方法,用于取消订阅,Subscriber实现的另一个接口Subscription的方法,这个方法在调用以后,Subscriber就不会再接收事件了.所以在调用这个方法的时候,先调用isUnsubscribed(),这个方法很重要，因为在 subscribe() 之后， Observable 会持有Subscriber的引用，这个引用如果不能及时被释放，将有内存泄露的风险。所以最好保持一个原则：要在不再使用的时候尽快在合适的地方（例如 onPause() onStop() 等方法中）调用 unsubscribe() 来解除引用关系，以避免内存泄露的发生。</li>
+</ol>
+<h4 id="u521B_u5EFA_Observable"><a href="#u521B_u5EFA_Observable" class="headerlink" title="创建 Observable"></a>创建 Observable</h4><p>Observable是观察者,它决定<strong>什么时候触发事件</strong>,和<strong>触发什么事件</strong>.RxJava使用create()方法创建一个Observable,然后定义事件的触发规则.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Observable observable = Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> String&gt; subscriber)</span> </span>&#123;</span><br><span class="line">        subscriber.onNext(<span class="string">"Hello"</span>);</span><br><span class="line">        subscriber.onNext(<span class="string">"Hi"</span>);</span><br><span class="line">        subscriber.onNext(<span class="string">"Aloha"</span>);</span><br><span class="line">        subscriber.onCompleted();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到,传入了<strong>OnSubscribe</strong>对象,它被存储到了返回的Observable对象中,作用就是一个依次执行的计划表.当Observable被订阅的时候,call()方法就会调用.<strong>被观察者</strong>调用了<strong>观察者</strong>3次onNext,1次onCompleted().<br>以上代码还可以这样写:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Observable observable = Observable.just(<span class="string">"Hello"</span>, <span class="string">"Hi"</span>, <span class="string">"Aloha"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这样写<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] words = &#123;<span class="string">"Hello"</span>, <span class="string">"Hi"</span>, <span class="string">"Aloha"</span>&#125;;</span><br><span class="line">Observable observable = Observable.from(words);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Subscribe_u8BA2_u9605"><a href="#Subscribe_u8BA2_u9605" class="headerlink" title="Subscribe订阅"></a>Subscribe订阅</h3><p>创建了Observer和Observable之后,关联起来,就可以了</p>
+<blockquote>
+<p>observable.subscribe(observer)<br>observable.subscribe(subscriber);</p>
+</blockquote>
+<p>Observable.subscribe(Subscriber)实现的伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Subscription <span class="title">subscribe</span><span class="params">(Subscriber subscriber)</span> </span>&#123;</span><br><span class="line">    subscriber.onStart();</span><br><span class="line">    onSubscribe.call(subscriber);</span><br><span class="line">    <span class="keyword">return</span> subscriber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>做了三件事情</p>
+<ol>
+<li>调用 Subscriber.onStart() 。这个方法在前面已经介绍过，是一个可选的准备方法。</li>
+<li>调用 Observable 中的 OnSubscribe.call(Subscriber) 。在这里，事件发送的逻辑开始运行。从这也可以看出，在 RxJava 中， Observable并不是在创建的时候就立即开始发送事件，而是在它被订阅的时候，即当 subscribe() 方法执行的时候。</li>
+<li>将传入的 Subscriber 作为 Subscription 返回。这是为了方便 unsubscribe().</li>
+</ol>
 </span>
       
     </div>
@@ -356,7 +379,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
           
             <a href="/tags/android/" rel="tag">#android</a>
           
-            <a href="/tags/源码/" rel="tag">#源码</a>
+            <a href="/tags/框架/" rel="tag">#框架</a>
           
         </div>
       
@@ -473,14 +496,14 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -512,7 +535,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5173_u4E8EReactiveX"><span class="nav-number">1.</span> <span class="nav-text">关于ReactiveX</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F"><span class="nav-number">1.0.1.</span> <span class="nav-text">使用观察者模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u7B80_u5316_u4EE3_u7801"><span class="nav-number">1.0.2.</span> <span class="nav-text">简化代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><span class="nav-number">2.</span> <span class="nav-text">概念 扩展的观察者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B9E_u73B0"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Observer_28_u89C2_u5BDF_u8005_29"><span class="nav-number">3.1.</span> <span class="nav-text">Observer(观察者)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5173_u4E8EReactiveX"><span class="nav-number">1.</span> <span class="nav-text">关于ReactiveX</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F"><span class="nav-number">1.0.1.</span> <span class="nav-text">使用观察者模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u7B80_u5316_u4EE3_u7801"><span class="nav-number">1.0.2.</span> <span class="nav-text">简化代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u89C2_u5BDF_u8005_u6A21_u5F0F"><span class="nav-number">2.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u5FF5__u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><span class="nav-number">3.</span> <span class="nav-text">概念 扩展的观察者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B9E_u73B0"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Observer_28_u89C2_u5BDF_u8005_29"><span class="nav-number">4.1.</span> <span class="nav-text">Observer(观察者)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u521B_u5EFA_Observable"><span class="nav-number">4.2.</span> <span class="nav-text">创建 Observable</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscribe_u8BA2_u9605"><span class="nav-number">5.</span> <span class="nav-text">Subscribe订阅</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
