@@ -1,5 +1,11 @@
 <!doctype html>
-<html class="theme-next   use-motion ">
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -32,7 +38,7 @@
 
 <link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -44,7 +50,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
 
 
 
@@ -64,10 +70,16 @@
 
 
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: '',
-    sidebar: 'always',
-    motion: true
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
   };
 </script>
 
@@ -76,15 +88,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -102,9 +105,18 @@
 
 
 
-  <div class="container one-column 
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right 
    page-home 
-">
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -133,7 +145,7 @@
   
 
   
-    <ul id="menu" class="menu menu-left">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
@@ -177,9 +189,10 @@
       
 
       
-      
         <li class="menu-item menu-item-search">
-          <a href="#" class="st-search-show-outputs">
+          
+            <a href="#" class="st-search-show-outputs">
+          
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
@@ -193,7 +206,9 @@
   
     <div class="site-search">
       
-  
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
 
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
@@ -215,24 +230,10 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-
-    
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
     
       
 
@@ -265,7 +266,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-03-20T12:48:28+08:00" content="2016-03-20">
               2016-03-20
             </time>
@@ -273,7 +277,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/笔记/" itemprop="url" rel="index">
@@ -301,21 +309,23 @@
 
           
 
+          
+          
+
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h2 id="u57FA_u672C_u6D41_u7A0B"><a href="#u57FA_u672C_u6D41_u7A0B" class="headerlink" title="基本流程"></a>基本流程</h2><h3 id="1-_u5B89_u88C5Git"><a href="#1-_u5B89_u88C5Git" class="headerlink" title="1.安装Git"></a>1.安装Git</h3><p>下载安装<a href="http://git-scm.com/downloads/" target="_blank" rel="external">点击下载</a>,然后AS设置,在Version Control -&gt; Git,配置git path,然后test</p>
+          
+            <h2 id="u57FA_u672C_u6D41_u7A0B"><a href="#u57FA_u672C_u6D41_u7A0B" class="headerlink" title="基本流程"></a>基本流程</h2><h3 id="1-_u5B89_u88C5Git"><a href="#1-_u5B89_u88C5Git" class="headerlink" title="1.安装Git"></a>1.安装Git</h3><p>下载安装<a href="http://git-scm.com/downloads/" target="_blank" rel="external">点击下载</a>,然后AS设置,在Version Control -&gt; Git,配置git path,然后test</p>
 <h3 id="2-_u914D_u7F6E-gitignore_u6587_u4EF6"><a href="#2-_u914D_u7F6E-gitignore_u6587_u4EF6" class="headerlink" title="2.配置.gitignore文件"></a>2.配置.gitignore文件</h3><blockquote>
 <p>*.iml<br>.gradle<br>/local.properties<br>/.idea/workspace.xml<br>/.idea/libraries<br>.DS_Store<br>/build<br>/captures<br>/.idea</p>
 </blockquote>
@@ -339,9 +349,193 @@
 <p>git pull origin master</p>
 </blockquote>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/08/RxJava/" itemprop="url">
+                  RxJava
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-08T22:58:26+08:00" content="2016-03-08">
+              2016-03-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/08/RxJava/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/RxJava/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>RxJava,一个大家最近吵的很火热的词.</p>
+<blockquote>
+<p>RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library for composing asynchronous and event-based programs by using observable sequences.</p>
+</blockquote>
+<p>大约就是这个意思:RxJava是一个通过观察队列实现的异步的,基于事件的在JVM的库</p>
+<hr>
+<h1 id="u5173_u4E8EReactiveX"><a href="#u5173_u4E8EReactiveX" class="headerlink" title="关于ReactiveX"></a>关于ReactiveX</h1><p>Rx = Observables + LINQ + Schedulers。</p>
+<h2 id="u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u4F7F_u7528_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="使用观察者模式"></a>使用观察者模式</h2><ul>
+<li>创建：Rx可以方便的创建事件流和数据流</li>
+<li>组合：Rx使用查询式的操作符组合和变换数据流</li>
+<li>监听：Rx可以订阅任何可观察的数据流并执行操作</li>
+</ul>
+<h2 id="u7B80_u5316_u4EE3_u7801"><a href="#u7B80_u5316_u4EE3_u7801" class="headerlink" title="简化代码"></a>简化代码</h2><ul>
+<li>函数式风格：对可观察数据流使用无副作用的输入输出函数，避免了程序里错综复杂的状态 简化代码：Rx的操作符通通常可以将复杂的难题简化为很少的几行代码</li>
+<li>异步错误处理：传统的try/catch没办法处理异步计算，Rx提供了合适的错误处理机制</li>
+<li>轻松使用并发：Rx的Observables和Schedulers让开发者可以摆脱底层的线程同步和各种并发问题</li>
+</ul>
+<hr>
+<h1 id="u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>传统的观察者模式中,例如:监视.<br>在一个地方警察蹲点看小偷,这里警察就是观察者,小偷就是被观察者,警察目不转睛,不停的看着小偷的一举一动,直到小偷开始作案.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> state=<span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">while</span>(state)&#123;</span><br><span class="line">    <span class="comment">//TODO 看小偷是否偷东西</span></span><br><span class="line">    <span class="keyword">if</span>(小偷开始偷)&#123;</span><br><span class="line">        sleep(<span class="number">10</span>);</span><br><span class="line">        state=<span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">//TODO 执行抓捕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>程序中的观察者模式,采用注册/订阅的模式.</p>
+<h1 id="u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="扩展的观察者模式"></a>扩展的观察者模式</h1><p>观察者模式就不用多说了,大家都懂的,android中最常见的就是view.setOnClickListener().不过这里的观察者,通过注册(register)或者订阅(Subscribe)的方式实现.</p>
+<p>RxJava 的观察者模式有是个基本的状态</p>
+<ul>
+<li>Observable(可观察者)</li>
+<li>Observer(观察者)</li>
+<li>subscribe(订阅)</li>
+<li>事件</li>
+</ul>
+<p>不同意传统的观察者模式,onNext()[onClick()/onEvent()]这里增加两个:</p>
+<ul>
+<li>onCompleted()</li>
+<li>onError()</li>
+</ul>
+<p>onCompleted():事件队列完成,RxJava不仅把每个事件都单独处理,还把他们当成<strong>一个队列</strong>处理,当不再有新的onNext()出现的时候,就得调用onCompleted()</p>
+<p>onError():事件队列异常,onError会触发,同时队列<strong>自动终止</strong>,不允许再有事件发出</p>
+<p>onCompleted()和onError()是互斥的.</p>
+<h1 id="u5B9E_u73B0"><a href="#u5B9E_u73B0" class="headerlink" title="实现"></a>实现</h1><ol>
+<li>创建Observer(观察者)</li>
+<li>创建Observable(被观察者)</li>
+<li>创建Subscribe(订阅)</li>
+</ol>
+<h2 id="Observer_28_u89C2_u5BDF_u8005_29"><a href="#Observer_28_u89C2_u5BDF_u8005_29" class="headerlink" title="Observer(观察者)"></a>Observer(观察者)</h2><p>观察者决定事件触发的时候会有这么样的行为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Observer&lt;String&gt; observer = <span class="keyword">new</span> Observer&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Item: "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Completed!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"Error!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>除了 Observer 接口之外，RxJava 还内置了一个实现了 Observer 的抽象类：Subscriber。 Subscriber 对 Observer 接口进行了一些扩展，但他们的基本使用方式是完全一样的.</p>
+<p>实质上,在RxJava中,Observer也总是会被转成Subscriber.</p>
+<p>他们的区别:</p>
+<ol>
+<li>Subscriber有新增加的方法onStart(),它会执行在subscribe刚开始,这个时候可以做准备工作,比如数据初始化.但是注意,subscribe会执行在任何线程,所以要操作UI线程的东西,比如弹出加载的dialog之类的,是不可以的.除非使用doOnSubscribe()方法.</li>
+<li>unsubscribe()这个方法,用于取消订阅,Subscriber实现的另一个接口Subscription的方法,这个方法在调用以后,Subscriber就不会再接收事件了.所以在调用这个方法的时候,先调用isUnsubscribed(),这个方法很重要，因为在 subscribe() 之后， Observable 会持有Subscriber的引用，这个引用如果不能及时被释放，将有内存泄露的风险。所以最好保持一个原则：要在不再使用的时候尽快在合适的地方（例如 onPause() onStop() 等方法中）调用 unsubscribe() 来解除引用关系，以避免内存泄露的发生。</li>
+</ol>
+<h2 id="u521B_u5EFA_Observable"><a href="#u521B_u5EFA_Observable" class="headerlink" title="创建 Observable"></a>创建 Observable</h2><p>Observable是观察者,它决定<strong>什么时候触发事件</strong>,和<strong>触发什么事件</strong>.RxJava使用create()方法创建一个Observable,然后定义事件的触发规则.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Observable observable = Observable.create(<span class="keyword">new</span> Observable.OnSubscribe&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> String&gt; subscriber)</span> </span>&#123;</span><br><span class="line">        subscriber.onNext(<span class="string">"Hello"</span>);</span><br><span class="line">        subscriber.onNext(<span class="string">"Hi"</span>);</span><br><span class="line">        subscriber.onNext(<span class="string">"Aloha"</span>);</span><br><span class="line">        subscriber.onCompleted();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到,传入了<strong>OnSubscribe</strong>对象,它被存储到了返回的Observable对象中,作用就是一个依次执行的计划表.当Observable被订阅的时候,call()方法就会调用.<strong>被观察者</strong>调用了<strong>观察者</strong>3次onNext,1次onCompleted().<br>以上代码还可以这样写:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Observable observable = Observable.just(<span class="string">"Hello"</span>, <span class="string">"Hi"</span>, <span class="string">"Aloha"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这样写<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] words = &#123;<span class="string">"Hello"</span>, <span class="string">"Hi"</span>, <span class="string">"Aloha"</span>&#125;;</span><br><span class="line">Observable observable = Observable.from(words);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Subscribe_u8BA2_u9605"><a href="#Subscribe_u8BA2_u9605" class="headerlink" title="Subscribe订阅"></a>Subscribe订阅</h2><p>创建了Observer和Observable之后,关联起来,就可以了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">observable.subscribe(observer);</span><br><span class="line">observable.subscribe(subscriber);</span><br></pre></td></tr></table></figure>
+<p>Observable.subscribe(Subscriber)实现的伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Subscription <span class="title">subscribe</span><span class="params">(Subscriber subscriber)</span> </span>&#123;</span><br><span class="line">    subscriber.onStart();</span><br><span class="line">    onSubscribe.call(subscriber);</span><br><span class="line">    <span class="keyword">return</span> subscriber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>做了三件事情</p>
+<ol>
+<li>调用 Subscriber.onStart() 。这个方法在前面已经介绍过，是一个可选的准备方法。</li>
+<li>调用 Observable 中的 OnSubscribe.call(Subscriber) 。在这里，事件发送的逻辑开始运行。从这也可以看出，在 RxJava 中， Observable并不是在创建的时候就立即开始发送事件，而是在它被订阅的时候，即当 subscribe() 方法执行的时候。</li>
+<li>将传入的 Subscriber 作为 Subscription 返回。这是为了方便 unsubscribe().</li>
+</ol>
+<p>除了 subscribe(Observer) 和 subscribe(Subscriber) ，subscribe() 还支持不完整定义的回调，RxJava 会自动根据定义创建出 Subscriber<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Action1&lt;String&gt; onNextAction = <span class="keyword">new</span> Action1&lt;String&gt;() &#123;</span><br><span class="line">    <span class="comment">// onNext()</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Log.d(tag, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Action1&lt;Throwable&gt; onErrorAction = <span class="keyword">new</span> Action1&lt;Throwable&gt;() &#123;</span><br><span class="line">    <span class="comment">// onError()</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">(Throwable throwable)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Error handling</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Action0 onCompletedAction = <span class="keyword">new</span> Action0() &#123;</span><br><span class="line">    <span class="comment">// onCompleted()</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(tag, <span class="string">"completed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动创建 Subscriber ，并使用 onNextAction 来定义 onNext()</span></span><br><span class="line">observable.subscribe(onNextAction);</span><br><span class="line"><span class="comment">// 自动创建 Subscriber ，并使用 onNextAction 和 onErrorAction 来定义 onNext() 和 onError()</span></span><br><span class="line">observable.subscribe(onNextAction, onErrorAction);</span><br><span class="line"><span class="comment">// 自动创建 Subscriber ，并使用 onNextAction、 onErrorAction 和 onCompletedAction 来定义 onNext()、 onError() 和 onCompleted()</span></span><br><span class="line">observable.subscribe(onNextAction, onErrorAction, onCompletedAction);</span><br></pre></td></tr></table></figure></p>
+<p>简单解释一下这段代码中出现的 Action1 和 Action0。 Action0 是 RxJava 的一个接口，它只有一个方法 call()，这个方法是无参无返回值的；由于 onCompleted() 方法也是无参无返回值的，因此 Action0 可以被当成一个包装对象，将 onCompleted() 的内容打包起来将自己作为一个参数传入 subscribe() 以实现不完整定义的回调。这样其实也可以看做将 onCompleted() 方法作为参数传进了 subscribe()，相当于其他某些语言中的『闭包』。 Action1 也是一个接口，它同样只有一个方法 call(T param)，这个方法也无返回值，但有一个参数；与 Action0 同理，由于 onNext(T obj) 和 onError(Throwable error) 也是单参数无返回值的，因此 Action1 可以将 onNext(obj) 和 onError(error) 打包起来传入 subscribe() 以实现不完整定义的回调。事实上，虽然 Action0 和 Action1 在 API 中使用最广泛，但 RxJava 是提供了多个 ActionX 形式的接口 (例如 Action2, Action3) 的，它们可以被用以包装不同的无返回值的方法。</p>
+<blockquote>
+<p>注：正如前面所提到的，Observer 和 Subscriber 具有相同的角色，而且 Observer 在 subscribe() 过程中最终会被转换成 Subscriber 对象，因此，从这里开始，后面的描述我将用 Subscriber 来代替 Observer ，这样更加严谨。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -390,7 +584,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-02-29T23:51:32+08:00" content="2016-02-29">
               2016-02-29
             </time>
@@ -398,7 +595,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/生活/" itemprop="url" rel="index">
@@ -426,21 +627,23 @@
 
           
 
+          
+          
+
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>  <strong>一个醉酒的不眠夜,想和自己说说话.</strong></p>
+          
+            <p>  <strong>一个醉酒的不眠夜,想和自己说说话.</strong></p>
 <p>当初开这个博客的时候,是想以技术博客为主的.然而两个月过去了,发现自己还是当初的自己,每天还是习惯在笔记本上写写花花,而这里嫣然成了一个我记小技巧笔记的地方.</p>
 <p>而我今天更想和自己说说话,在这个安静的地方.</p>
 <p>他们说今天是2月29,他们说想看到四年以后一个更好的自己,他们说了太多太多,或矫情,或BB,或文艺,或不着边际.</p>
@@ -454,9 +657,12 @@
 <p>再说说计划,手头的任务甩不完,接手的工程师招不到,明天开始,尝试下双倍工作吧,把app和游戏同时启动,试试看.</p>
 <p>眼睛不舒服,去睡觉了</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -505,7 +711,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-01-16T23:50:24+08:00" content="2016-01-16">
               2016-01-16
             </time>
@@ -513,7 +722,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/笔记/" itemprop="url" rel="index">
@@ -541,21 +754,23 @@
 
           
 
+          
+          
+
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <h1 id="u8111_u6B8B_u9519_u8BEF1"><a href="#u8111_u6B8B_u9519_u8BEF1" class="headerlink" title="脑残错误1"></a>脑残错误1</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String[] tempCity=<span class="keyword">new</span> String[]&#123;<span class="string">"北京"</span>, <span class="string">"天津"</span>, <span class="string">"上海"</span>, <span class="string">"广州"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CityChoosePopupWindow</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context,</span><br><span class="line">                LayoutInflater.from(context).inflate(R.layout.popupwindow_citychoose, <span class="keyword">null</span>),</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT,</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initViews</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">        Log.d(mLogName,tempCity[<span class="number">0</span>]);<span class="comment">//提示tempCity为null</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+            <h1 id="u8111_u6B8B_u9519_u8BEF1"><a href="#u8111_u6B8B_u9519_u8BEF1" class="headerlink" title="脑残错误1"></a>脑残错误1</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String[] tempCity=<span class="keyword">new</span> String[]&#123;<span class="string">"北京"</span>, <span class="string">"天津"</span>, <span class="string">"上海"</span>, <span class="string">"广州"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CityChoosePopupWindow</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context,</span><br><span class="line">                LayoutInflater.from(context).inflate(R.layout.popupwindow_citychoose, <span class="keyword">null</span>),</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT,</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initViews</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">        Log.d(mLogName,tempCity[<span class="number">0</span>]);<span class="comment">//提示tempCity为null</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BasePopupWindow</span><span class="params">(Context context,View contentView, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(contentView, width, height, <span class="keyword">true</span>);</span><br><span class="line">    mContentView = contentView;</span><br><span class="line">    mContext=context;</span><br><span class="line">    setBackgroundDrawable(<span class="keyword">new</span> BitmapDrawable());</span><br><span class="line">    initViews();</span><br><span class="line">    initEvents();</span><br><span class="line">    init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>很简单的错误,但是当时蒙B了还是找了一阵子,后来才看到,这个class[CityChoosePopupwindow]是继承于自己的BasePopupwindow,进入CityChoosePopupwindow的构造方法,然后进入父类的构造方法,然后构造方法调用了<strong>抽象方法:initViews()</strong>,而这个时候子类全局变量还没有初始化</p>
@@ -578,9 +793,12 @@
 <p>1&gt;在构造方法中设置一个颜色.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setBackgroundColor(<span class="keyword">new</span> Color().parseColor(<span class="string">"#00000000"</span>));</span><br></pre></td></tr></table></figure></p>
 <p>2&gt;在构造方法中调用,去掉其WILL_NOT_DRAW<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setWillNotDraw(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure></p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -629,7 +847,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-01-15T15:38:47+08:00" content="2016-01-15">
               2016-01-15
             </time>
@@ -637,7 +858,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/生活/" itemprop="url" rel="index">
@@ -665,28 +890,33 @@
 
           
 
+          
+          
+
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>  <strong>这是我的博客的第一篇文章.</strong></p>
+          
+            <p>  <strong>这是我的博客的第一篇文章.</strong></p>
 <p>  很久之前就有写博客的想法了,不过总是因为各种原因没有去做。记得大约在去年，还在CSDN和开源中国之间徘徊过,后来手机用简书的时候,也考虑过在简书上开一个自己的博客,可惜这些想法最后都没有结果。<br>  最后之所以准备开这个博客，一方面是好朋友给我推荐了Github+Hexo，二来是静态博客最近确实很火。加上新的一年到了，也准备给自己定点计划和目标，所以才强迫自己开了这个博客。</p>
 <p>  至于www.3toptop.top这个域名，本来是想买个自己喜欢的词缀的顶级域名的，可惜都被抢注了，然后脑洞打开，就选了这个域名…然后还起了这个很中二的名字（做数据统计，域名解析的时候，都是叫3-Top），然后就因为当时的主题的样式的标题上下有两道横线，然后感觉不喜欢，就被抛弃了。。。。。</p>
 <p>  <img src="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png" alt="被嫌弃的双横线"><br>  虽然俺是程序猿，但程序猿也是有生活的好吗？加上这个博客应该是不会被搜索引擎收到的，所以我想记录的东西都可以放到这里，技术分享，学习笔记，生活经历，逗比玩法什么的，都会尝试去写。</p>
 
-            
-          </span>
+          
         
+      
+    </div>
+
+    <div>
       
     </div>
 
@@ -704,23 +934,20 @@
 
 
     
-
   </section>
 
   
 
 
+          </div>
+          
+
+
+          
+
         </div>
-
         
-
-
-        
-
-      </div>
-
-      
-        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -739,10 +966,12 @@
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/avatar.jpg" alt="茉蒽" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="茉蒽" />
           <p class="site-author-name" itemprop="name">茉蒽</p>
+          <p class="site-description motion-element" itemprop="description">代码 啤酒 音乐 诗</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">代码 啤酒 音乐 诗</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -751,19 +980,23 @@
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            <a href="/categories">
-              <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">分类</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
 
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
               </a>
-          </div>
+            </div>
+          
 
         </nav>
 
@@ -776,7 +1009,8 @@
         
         
 
-        <div class="links-of-author motion-element">
+        
+        <div class="links-of-blogroll motion-element">
           
         </div>
 
@@ -788,17 +1022,18 @@
   </aside>
 
 
-      
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">茉蒽</span>
 </div>
@@ -810,7 +1045,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Pisces
   </a>
 </div>
 
@@ -819,16 +1054,68 @@
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
   
-    
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
 
   
     
@@ -846,36 +1133,21 @@
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
-    
-     
 
-
+  
     
   
 
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
-
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
-
   
   
 
   
+
   
 
 </body>
