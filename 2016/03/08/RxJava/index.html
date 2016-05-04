@@ -71,7 +71,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
 RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library for composing asynchronous and event-based programs by using observable sequences.
 
 大约就是这个意思:RxJ">
-<meta property="og:updated_time" content="2016-03-30T13:43:35.000Z">
+<meta property="og:updated_time" content="2016-04-18T12:47:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava">
 <meta name="twitter:description" content="RxJava,一个大家最近吵的很火热的词.
@@ -351,6 +351,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
 <hr>
 <h1 id="u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>传统的观察者模式中,例如:监视.<br>在一个地方警察蹲点看小偷,这里警察就是观察者,小偷就是被观察者,警察目不转睛,不停的看着小偷的一举一动,直到小偷开始作案.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> state=<span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">while</span>(state)&#123;</span><br><span class="line">    <span class="comment">//TODO 看小偷是否偷东西</span></span><br><span class="line">    <span class="keyword">if</span>(小偷开始偷)&#123;</span><br><span class="line">        sleep(<span class="number">10</span>);</span><br><span class="line">        state=<span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">//TODO 执行抓捕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>程序中的观察者模式,采用注册/订阅的模式.</p>
+<a id="more"></a>
 <h1 id="u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F"><a href="#u6269_u5C55_u7684_u89C2_u5BDF_u8005_u6A21_u5F0F" class="headerlink" title="扩展的观察者模式"></a>扩展的观察者模式</h1><p>观察者模式就不用多说了,大家都懂的,android中最常见的就是view.setOnClickListener().不过这里的观察者,通过注册(register)或者订阅(Subscribe)的方式实现.</p>
 <p>RxJava 的观察者模式有是个基本的状态</p>
 <ul>
@@ -467,8 +468,8 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/20/git/" rel="prev" title="git">
-                git <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/20/Android Studio使用git/" rel="prev" title="Android Studio使用git">
+                Android Studio使用git <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +561,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -568,7 +569,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -577,7 +578,7 @@ RxJava is a Java VM implementation of ReactiveX (Reactive Extensions): a library
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
