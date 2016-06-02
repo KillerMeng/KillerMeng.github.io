@@ -256,6 +256,378 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/12/Shell学习/" itemprop="url">
+                  Shell学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T16:58:23+08:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/基础/" itemprop="url" rel="index">
+                    <span itemprop="name">基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/12/Shell学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/Shell学习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Shell既是一种命令语言,有是一种程序设计语言.<br>它可以交互解释用户输入的命令,也可以有各种变量,参数,控制结构.</p>
+<h3 id="u7C7B_u578B"><a href="#u7C7B_u578B" class="headerlink" title="类型"></a>类型</h3><p>几种常见类型的shell</p>
+<ul>
+<li>bash:是Linux标准默认的shell</li>
+<li>sh:是Unix标准默认的shell(包括macox)</li>
+</ul>
+<h3 id="u7B80_u5355_u4F8B_u5B50"><a href="#u7B80_u5355_u4F8B_u5B50" class="headerlink" title="简单例子"></a>简单例子</h3><p>test.sh<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Hello World"</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>chmod +x ./test.sh  #使脚本具有执行权限<br>./test.sh  #执行脚本<br>sh test.sh #执行脚本</p>
+</blockquote>
+<p>这里要写成./test.sh,而不是test.sh,如果这样写,linux系统回去path中寻找有没有test.sh</p>
+<h3 id="u5B66_u4E60"><a href="#u5B66_u4E60" class="headerlink" title="学习"></a>学习</h3><h4 id="read_u5173_u952E_u5B57"><a href="#read_u5173_u952E_u5B57" class="headerlink" title="read关键字"></a>read关键字</h4><p>read可以从stdin获取输入的赋值并且赋值到一个变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"What is your name?"</span></span><br><span class="line"><span class="built_in">read</span> PERSON</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Hello, <span class="variable">$PERSON</span>"</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="u53D8_u91CF"><a href="#u53D8_u91CF" class="headerlink" title="变量"></a>变量</h4><h5 id="u5B9A_u4E49_u53D8_u91CF"><a href="#u5B9A_u4E49_u53D8_u91CF" class="headerlink" title="定义变量"></a>定义变量</h5><blockquote>
+<p>vareName=”value”</p>
+</blockquote>
+<p><strong>变量名和等号之间不能有空格</strong></p>
+<h5 id="u4F7F_u7528_u53D8_u91CF"><a href="#u4F7F_u7528_u53D8_u91CF" class="headerlink" title="使用变量"></a>使用变量</h5><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">varName=<span class="string">"a value"</span></span><br><span class="line">echo <span class="variable">$verName</span></span><br></pre></td></tr></table></figure>
+<p>使用一个定义过的变量,只要在前面加$访问即可<br>也可以用{}扩住变量,方便让解释器识别变量的边界,推荐使用<br><em>用readonly关键字可以定义只读变量</em><br><em>用unset关键字可以删除变量</em></p>
+<h5 id="u7279_u6B8A_u7684_u53D8_u91CF"><a href="#u7279_u6B8A_u7684_u53D8_u91CF" class="headerlink" title="特殊的变量"></a>特殊的变量</h5><ul>
+<li>$0   当前脚本的文件名</li>
+<li>$n   传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。</li>
+<li>$#   传递给脚本或函数的参数个数。</li>
+<li>$*   传递给脚本或函数的所有参数。</li>
+<li>$@   传递给脚本或函数的所有参数。被双引号(“ “)包含时，与 $* 稍有不同</li>
+<li>$?   上个命令的退出状态，或函数的返回值。大部分成功返回0,失败返回1.</li>
+<li>$$   当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。</li>
+</ul>
+<h5 id="24*__u548C__24@__u7684_u533A_u522B"><a href="#24*__u548C__24@__u7684_u533A_u522B" class="headerlink" title="$* 和 $@ 的区别"></a>$* 和 $@ 的区别</h5><p>感觉不是很常用的东西,但是还是从学习网站中摘录出来,以备不时之需</p>
+<blockquote>
+<p>$* 和 $@ 都表示传递给函数或脚本的所有参数，不被双引号(“ “)包含时，都以”$1” “$2” … “$n” 的形式输出所有参数。</p>
+<p>但是当它们被双引号(“ “)包含时，”$*” 会将所有的参数作为一个整体，以”$1 $2 … $n”的形式输出所有参数；”$@”会将各个参数分开，以”$1” “$2” … “$n” 的形式输出所有参数。</p>
+</blockquote>
+<p><strong>-e 如果echo中有转义符,需要加-e</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">a=<span class="number">10</span></span><br><span class="line"><span class="built_in">echo</span> <span class="operator">-e</span> <span class="string">"Value of a is <span class="variable">$a</span> \n"</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="u547D_u4EE4_u66FF_u6362"><a href="#u547D_u4EE4_u66FF_u6362" class="headerlink" title="命令替换"></a>命令替换</h5><p>命令替换是指Shell可以先执行命令，将输出结果暂时保存，在适当的地方输出。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="command"><span class="keyword">command</span>`</span></span><br></pre></td></tr></table></figure>
+<p>一个简单的例子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">DATE=`date`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Date is <span class="variable">$DATE</span>"</span></span><br><span class="line">USERS=`who | wc <span class="operator">-l</span>`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Logged in user are <span class="variable">$USERS</span>"</span></span><br><span class="line">UP=`date ; uptime`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Uptime is <span class="variable">$UP</span>"</span></span><br></pre></td></tr></table></figure>
+<h5 id="u53D8_u91CF_u66FF_u6362"><a href="#u53D8_u91CF_u66FF_u6362" class="headerlink" title="变量替换"></a>变量替换</h5><p>根据变量的状态(是否为空,是否定义)来改变它的值</p>
+<table>
+<thead>
+<tr>
+<th>形式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${var}</td>
+<td>变量本来的值</td>
+</tr>
+<tr>
+<td>${var:-word}</td>
+<td>如果变量 var 为空或已被删除(unset)，那么返回 word，但不改变 var 的值</td>
+</tr>
+<tr>
+<td>${var:=word}</td>
+<td>如果变量 var 为空或已被删除(unset)，那么返回 word，并将 var 的值设置为 word。</td>
+</tr>
+<tr>
+<td>${var:?message}</td>
+<td>如果变量 var 为空或已被删除(unset)，那么将消息 message 送到标准错误输出，可以用来检测变量 var是否可以被正常赋值。若此替换出现在Shell脚本中，那么脚本将停止运行。</td>
+</tr>
+<tr>
+<td>${var:+word}</td>
+<td>如果变量 var 被定义，那么返回 word，但不改变 var 的值。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="u8FD0_u7B97"><a href="#u8FD0_u7B97" class="headerlink" title="运算"></a>运算</h4><p>Bash 支持很多运算符，包括算数运算符、关系运算符、布尔运算符、字符串运算符和文件测试运算符。<br>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。<br>例如:两个数相加:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">val=`expr <span class="number">2</span> + <span class="number">2</span>`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Total value : <span class="variable">$val</span>"</span></span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<ul>
+<li>表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。</li>
+<li>完整的表达式要被 <code> </code> 包含，注意这个字符不是常用的单引号，在 Esc 键下边。</li>
+</ul>
+<h5 id="u7B97_u672F_u8FD0_u7B97_u7B26"><a href="#u7B97_u672F_u8FD0_u7B97_u7B26" class="headerlink" title="算术运算符"></a>算术运算符</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line">a=<span class="number">10</span></span><br><span class="line">b=<span class="number">20</span></span><br><span class="line">val=`expr <span class="variable">$a</span> + <span class="variable">$b</span>`</span><br><span class="line">val=`expr <span class="variable">$a</span> - <span class="variable">$b</span>`</span><br><span class="line">val=`expr <span class="variable">$a</span> \* <span class="variable">$b</span>`</span><br><span class="line">val=`expr <span class="variable">$b</span> / <span class="variable">$a</span>`</span><br><span class="line">val=`expr <span class="variable">$b</span> % <span class="variable">$a</span>`</span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> == <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"a is equal to b"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$a</span> != <span class="variable">$b</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"a is not equal to b"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意条件表达式的空格,[ $a == $b ],错误写法:[$a==$b]</strong></p>
+<h5 id="u5173_u7CFB_u8FD0_u7B97_u7B26"><a href="#u5173_u7CFB_u8FD0_u7B97_u7B26" class="headerlink" title="关系运算符"></a>关系运算符</h5><p>关系运算符只支持数字,不支持字符串,除非字符串是数字</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-eq</td>
+<td>检测两个数是否相等，相等返回 true。</td>
+<td>[ $a -eq $b ] 返回 true</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>检测两个数是否相等，不相等返回 true。</td>
+<td>[ $a -ne $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td>[ $a -gt $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td>[ $a -lt $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>检测左边的数是否大等于右边的，如果是，则返回 true。</td>
+<td>[ $a -ge $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td>[ $a -le $b ] 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="u5E03_u5C14_u8FD0_u7B97_u7B26"><a href="#u5E03_u5C14_u8FD0_u7B97_u7B26" class="headerlink" title="布尔运算符"></a>布尔运算符</h5><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!</td>
+<td>非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td>[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>或运算，有一个表达式为 true 则返回 true。</td>
+<td>[ $a -lt 20 -o $b -gt 100 ] 返回 true。</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>与运算，两个表达式都为 true 才返回 true。</td>
+<td>[ $a -lt 20 -a $b -gt 100 ] 返回 false。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="u5B57_u7B26_u4E32_u8FD0_u7B97_u7B26"><a href="#u5B57_u7B26_u4E32_u8FD0_u7B97_u7B26" class="headerlink" title="字符串运算符"></a>字符串运算符</h5><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>检测两个字符串是否相等，相等返回 true。</td>
+<td>[ $a = $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>检测两个字符串是否相等，不相等返回 true。</td>
+<td>[ $a != $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>检测字符串长度是否为0，为0返回 true。</td>
+<td>[ -z $a ] 返回 false。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>检测字符串长度是否为0，不为0返回 true。</td>
+<td>[ -z $a ] 返回 true。</td>
+</tr>
+<tr>
+<td>str</td>
+<td>检测字符串是否为空，不为空返回 true。</td>
+<td>[ $a ] 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="u6587_u4EF6_u6D4B_u8BD5_u8FD0_u7B97_u7B26"><a href="#u6587_u4EF6_u6D4B_u8BD5_u8FD0_u7B97_u7B26" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h5><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>file 检测文件是否是块设备文件，如果是，则返回 true。</td>
+<td>[ -b $&#124;file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>file 检测文件是否是字符设备文件，如果是，则返回 true。</td>
+<td>[ -b $&#124;file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>file 检测文件是否是目录，如果是，则返回 true。</td>
+<td>[ -d $&#124;file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>file 检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+<td>[ -f $&#124;file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>file 检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+<td>[ -g $&#124;file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>file 检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+<td>[ -k $&#124;file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>file 检测文件是否是具名管道，如果是，则返回 true。</td>
+<td>[ -p $&#124;file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>file 检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+<td>[ -u $&#124;file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>file 检测文件是否可读，如果是，则返回 true。</td>
+<td>[ -r $&#124;file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>file 检测文件是否可写，如果是，则返回 true。</td>
+<td>[ -w $&#124;file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>file 检测文件是否可执行，如果是，则返回 true。</td>
+<td>[ -x $&#124;file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>file 检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
+<td>[ -s $&#124;file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>file 检测文件（包括目录）是否存在，如果是，则返回 true。</td>
+<td>[ -e $&#124;file ] 返回 true。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="u5B57_u7B26_u4E32"><a href="#u5B57_u7B26_u4E32" class="headerlink" title="字符串"></a>字符串</h4><h5 id="u5B57_u7B26_u4E32_u62FC_u63A5"><a href="#u5B57_u7B26_u4E32_u62FC_u63A5" class="headerlink" title="字符串拼接"></a>字符串拼接</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line">your_name=<span class="string">"qinjx"</span></span><br><span class="line">greeting=<span class="string">"hello, "</span><span class="variable">$your_name</span><span class="string">" !"</span></span><br><span class="line">greeting_1=<span class="string">"hello, <span class="variable">$&#123;your_name&#125;</span> !"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$greeting</span> <span class="variable">$greeting_1</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/18/Lua和其它语言的交互/" itemprop="url">
                   Lua和其它语言的交互
                 </a>
@@ -1237,7 +1609,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1245,7 +1617,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1254,7 +1626,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1273,6 +1645,19 @@
 
         
         <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">Links</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://example.com/" target="_blank">Title</a>
+                </li>
+              
+            </ul>
           
         </div>
 
