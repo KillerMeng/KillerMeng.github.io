@@ -256,6 +256,293 @@
             
               
                 
+                <a class="post-title-link" href="/2017/07/13/Python学习笔记/" itemprop="url">
+                  Python学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-13T00:58:16+08:00" content="2017-07-13">
+              2017-07-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/13/Python学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/13/Python学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="u4E00-_u57FA_u7840_u7BC7"><a href="#u4E00-_u57FA_u7840_u7BC7" class="headerlink" title="一.基础篇"></a>一.基础篇</h2><h3 id="1-_u7F16_u7801_3A"><a href="#1-_u7F16_u7801_3A" class="headerlink" title="1.编码:"></a>1.编码:</h3><p>Python3中,字符串是以Unicode编码的,支持多语言的.<br>单个字符的编码解码,有方法<code>ord()</code>和<code>chr()</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">ord</span><span class="params">(<span class="string">'A'</span>)</span></span>  <span class="number">65</span></span><br><span class="line"><span class="function"><span class="title">chr</span><span class="params">(<span class="number">65</span>)</span></span>   A</span><br></pre></td></tr></table></figure>
+<h3 id="2-str_u548Cbytes_u7684_u8F6C_u6362_3A"><a href="#2-str_u548Cbytes_u7684_u8F6C_u6362_3A" class="headerlink" title="2.str和bytes的转换:"></a>2.str和bytes的转换:</h3><p><code>&#39;ABC&#39;</code>是str,<code>b&#39;ABC&#39;</code>是bytes.<br>str -&gt; bytes encode()<br>bytes -&gt; str decode()</p>
+<h3 id="3-len_28_29_u65B9_u6CD5_3A"><a href="#3-len_28_29_u65B9_u6CD5_3A" class="headerlink" title="3.len()方法:"></a>3.len()方法:</h3><p>可以得到str包含多少个字符,或者计算bytes的字节数<br><code># -*- coding: utf-8 -*-</code>可以解释器用utf-8编码读取,文本存储的时候用UTF-8 without BOM编码</p>
+<h3 id="4-list_u548Ctuple"><a href="#4-list_u548Ctuple" class="headerlink" title="4.list和tuple"></a>4.list和tuple</h3><p><strong>list</strong>,是一种有序的集合:tbl=[1,2,3,4,5]</p>
+<ul>
+<li>末尾追加:tbl.append(6)</li>
+<li>插入到指定位置:tbl.insert(1,11)</li>
+<li>删除末尾:tbl.pop()</li>
+<li>删除指定位置tbl.pop(1)</li>
+</ul>
+<p><strong>tuple</strong>,没法修改的列表:t = (1,2,3)</p>
+<p><strong>dict</strong>,字典:d={‘wang’:12,’li’:22}<br>获取wang的分数 d[‘wang’],如果传入的key不存在,会报错,解决方法:</p>
+<ol>
+<li>用<code>in</code>判断key是否存在 ‘wang’ in d;</li>
+<li>用get方法d.get(‘wang’,-1),可以设置默认返回值</li>
+</ol>
+<p>dict中key要保证是不可边的,在python中,字符串,整数等是不可变的<br>dict中删除一个key:d.pop(‘wang’)</p>
+<p>g<br><strong>set</strong>,set和dict类似,也是一组可以的集合,但是不存储value,而且key不能重复<br>s=set([1,2,3])</p>
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>定义一个function:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">funcName</span><span class="params">(x,y=<span class="number">2</span>,z=<span class="number">3</span>)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> x * y * z</span><br><span class="line"><span class="comment">#方法调用</span></span><br><span class="line">a=funcName(<span class="number">1</span>)</span><br><span class="line">b=funcName(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">c=funcName(<span class="number">1</span>,z=<span class="number">1</span>)</span><br><span class="line">print(<span class="string">'%d-%d-%d'</span>%(a,b,c))</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/12/mac搭建python环境/" itemprop="url">
+                  mac搭建python环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-12T23:08:49+08:00" content="2017-07-12">
+              2017-07-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/12/mac搭建python环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/12/mac搭建python环境/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="u5B89_u88C5_u524D_3A"><a href="#u5B89_u88C5_u524D_3A" class="headerlink" title="安装前:"></a>安装前:</h1><p>Mac系统自带python的信息,我的版本是10.11</p>
+<blockquote>
+<p>/System/Library/Frameworks/Python.framework/Versions/2.6<br>/System/Library/Frameworks/Python.framework/Versions/2.7</p>
+</blockquote>
+<p>可以通过以下命令定位路径:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> python</span><br></pre></td></tr></table></figure>
+<h1 id="u51C6_u5907_u5B89_u88C5_3A"><a href="#u51C6_u5907_u5B89_u88C5_3A" class="headerlink" title="准备安装:"></a>准备安装:</h1><p>百度了下,方法一大堆,各种共存,切换方案,本屌也不经常用,就是学习使用,权衡了下,找了个最合适我的.</p>
+<ol>
+<li>安装Xcode,这个大家基本都有</li>
+<li>安装Homebrew,这个号称是OSX缺少的套件管理工具</li>
+<li>安装python,brew install python</li>
+<li>安装python3,brew install python3</li>
+</ol>
+<p>这样,你的电脑就有3个版本的python了(如果自带的算一个的话)<br>路径分别是,我上面提到的路径,剩下的2个,应该在<strong>/usr/local/Cellar</strong>,这个是Homebrew的安装空间.</p>
+<p>以后如果想用python2.x运行 就是python xx.py</p>
+<p>想用python3.x运行,就是python3 xx.py</p>
+<h1 id="u5173_u4E8Epip"><a href="#u5173_u4E8Epip" class="headerlink" title="关于pip"></a>关于pip</h1><p>安装第三方包的时候,pip就安装2.x的,pip3就安装3.x的<br>如果pip也升级了(网上看到的)<br>pip将会安装3.x的包,想安装2.x的,python -m pip即可</p>
+<h1 id="u518D_u778E_u903C_u6298_u817E_u4E0B_3F"><a href="#u518D_u778E_u903C_u6298_u817E_u4E0B_3F" class="headerlink" title="再瞎逼折腾下?"></a>再瞎逼折腾下?</h1><ol>
+<li>virtualenv:可以虚拟一份独立的py运行环境,可以学习(留坑,以后用的话,回来填上)</li>
+<li>修改~/.bashrc,打开:open ~/.bashrc,添加:alias python=”python3.5”,相当于修改别名,</li>
+<li>如果版本比我说的还多?那也可以直接找对应版本号的,/usr/local/bin下面去找</li>
+<li>pyenv:Simple Python version management</li>
+</ol>
+<h3 id="u5176_u4ED6_u8981_u8BF4_u7684"><a href="#u5176_u4ED6_u8981_u8BF4_u7684" class="headerlink" title="其他要说的"></a>其他要说的</h3><p>/usr/bin/ 存放系统自带的应用</p>
+<p>/usr/local/bin 存放用户自己的应用,全局脚本</p>
+<p>所以/usr/bin/下的python最好别修改,否则Xcode很多功能可能会GG</p>
+<p><em>python2只会维护到2020年……</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/19/JS学习笔记/" itemprop="url">
                   JS学习笔记
                 </a>
@@ -324,11 +611,10 @@
 
       
         
-          
-            <h3 id="strict_u6A21_u5F0F"><a href="#strict_u6A21_u5F0F" class="headerlink" title="strict模式"></a>strict模式</h3><p>如果一个变量没有没var申明,那么他就是全局变量,所以可以通过</p>
+          <h1 id="strict_u6A21_u5F0F"><a href="#strict_u6A21_u5F0F" class="headerlink" title="strict模式"></a>strict模式</h1><p>如果一个变量没有没var申明,那么他就是全局变量,所以可以通过</p>
 <pre><code>&apos;use strict&apos;
 </code></pre><p>来强制通过var申明变量</p>
-<h3 id="u6570_u7EC4"><a href="#u6570_u7EC4" class="headerlink" title="数组"></a>数组</h3><h4 id="slice_28_29"><a href="#slice_28_29" class="headerlink" title="slice()"></a>slice()</h4><p>它截取Array的部分元素，然后返回一个<strong>新的Array</strong><br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="atom">var</span> <span class="atom">arr</span> = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>];</span><br><span class="line"><span class="atom">arr</span>.<span class="atom">slice</span>(<span class="number">0</span>, <span class="number">3</span>); // 从索引<span class="number">0</span>开始，到索引<span class="number">3</span>结束，但不包括索引<span class="number">3</span>: [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]</span><br><span class="line"><span class="atom">arr</span>.<span class="atom">slice</span>(<span class="number">3</span>); // 从索引<span class="number">3</span>开始到结束: [<span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>]</span><br></pre></td></tr></table></figure></p>
+<h1 id="u6570_u7EC4"><a href="#u6570_u7EC4" class="headerlink" title="数组"></a>数组</h1><h2 id="slice_28_29"><a href="#slice_28_29" class="headerlink" title="slice()"></a>slice()</h2><p>它截取Array的部分元素，然后返回一个<strong>新的Array</strong><br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="atom">var</span> <span class="atom">arr</span> = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>];</span><br><span class="line"><span class="atom">arr</span>.<span class="atom">slice</span>(<span class="number">0</span>, <span class="number">3</span>); // 从索引<span class="number">0</span>开始，到索引<span class="number">3</span>结束，但不包括索引<span class="number">3</span>: [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]</span><br><span class="line"><span class="atom">arr</span>.<span class="atom">slice</span>(<span class="number">3</span>); // 从索引<span class="number">3</span>开始到结束: [<span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>]</span><br></pre></td></tr></table></figure></p>
 <p>因为返回的是行的array,所以也可以用作拷贝</p>
 <figure class="highlight cal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>];</span><br><span class="line"><span class="keyword">var</span> aCopy = arr.slice();</span><br><span class="line">aCopy; // [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>]</span><br><span class="line">aCopy === arr; // <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -337,28 +623,11 @@
 <li>reverse()把整个Array的元素给掉个个，也就是反转</li>
 <li>concat()方法把当前的Array和另一个Array连接起来，并返回一个新的Array</li>
 </ul>
-<h3 id="u5BF9_u8C61"><a href="#u5BF9_u8C61" class="headerlink" title="对象"></a>对象</h3><ul>
-<li>删除属性 delete obj.name</li>
-<li>如果我们要检测xiaoming是否拥有某一属性，可以用in操作符：</li>
-<li>要判断一个属性是否是obj自身拥有的，而不是继承得到的，可以用hasOwnProperty()方法：<br>obj.hasOwnProperty(‘name’); // true</li>
-</ul>
-<h3 id="Map_u548CSet"><a href="#Map_u548CSet" class="headerlink" title="Map和Set"></a>Map和Set</h3><h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>Map是一组键值对的结构，具有极快的查找速度。</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'Michael'</span>, <span class="number">95</span>], [<span class="string">'Bob'</span>, <span class="number">75</span>], [<span class="string">'Tracy'</span>, <span class="number">85</span>]]);</span><br><span class="line">m.<span class="literal">get</span>(<span class="string">'Michael'</span>); <span class="comment">// 95</span></span><br></pre></td></tr></table></figure>
-<p>初始化Map需要一个二维数组，或者直接初始化一个空Map。Map具有以下方法：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> Map(); <span class="comment">// 空Map</span></span><br><span class="line">m.<span class="keyword">set</span>(<span class="string">'Adam'</span>, <span class="number">67</span>); <span class="comment">// 添加新的key-value</span></span><br><span class="line">m.<span class="keyword">set</span>(<span class="string">'Bob'</span>, <span class="number">59</span>);</span><br><span class="line">m.has(<span class="string">'Adam'</span>); <span class="comment">// 是否存在key 'Adam': true</span></span><br><span class="line">m.<span class="keyword">get</span>(<span class="string">'Adam'</span>); <span class="comment">// 67</span></span><br><span class="line">m.<span class="keyword">delete</span>(<span class="string">'Adam'</span>); <span class="comment">// 删除key 'Adam'</span></span><br><span class="line">m.<span class="keyword">get</span>(<span class="string">'Adam'</span>); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>Set和Map类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在Set中，没有重复的key。</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">Set</span>(); <span class="comment">// 空Set</span></span><br><span class="line"><span class="keyword">var</span> s2 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 含1, 2, 3</span></span><br></pre></td></tr></table></figure>
-<p>重复元素在Set中自动被过滤：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s = <span class="keyword">new</span> Set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="string">'3'</span>]);</span><br><span class="line">s; <span class="comment">// Set &#123;1, 2, 3, "3"&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="iterable"><a href="#iterable" class="headerlink" title="iterable"></a>iterable</h3><p>用for … of循环遍历集合，用法如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>];</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]);</span><br><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="number">1</span>, <span class="string">'x'</span>], [<span class="number">2</span>, <span class="string">'y'</span>], [<span class="number">3</span>, <span class="string">'z'</span>]]);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> a) &#123; <span class="comment">// 遍历Array</span></span><br><span class="line">    alert(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> s) &#123; <span class="comment">// 遍历Set</span></span><br><span class="line">    alert(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> m) &#123; <span class="comment">// 遍历Map</span></span><br><span class="line">    alert(x[<span class="number">0</span>] + <span class="string">'='</span> + x[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><p>它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。arguments类似Array但它不是一个Array.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    alert(x); <span class="comment">// 10</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">        alert(<span class="built_in">arguments</span>[i]); <span class="comment">// 10, 20, 30</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
-<p>实际上arguments最常用于判断传入参数的个数。你可能会看到这样的写法：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo(a[, b], c)</span></span><br><span class="line"><span class="comment">// 接收2~3个参数，b是可选参数，如果只传2个参数，b默认为null：</span></span><br><span class="line"><span class="function">function <span class="title">foo</span><span class="params">(a, b, c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arguments.length === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="comment">// 实际拿到的参数是a和b，c为undefined</span></span><br><span class="line">        c = b; <span class="comment">// 把b赋给c</span></span><br><span class="line">        b = null; <span class="comment">// b变为默认值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="comment">// 1 2 3</span></span><br><span class="line">foo(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">// 1 null 2</span></span><br></pre></td></tr></table></figure>
-<p>####</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/19/JS学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1248,247 +1517,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/29/关于梦想-关于现实/" itemprop="url">
-                  关于梦想,关于现实
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-29T23:51:32+08:00" content="2016-02-29">
-              2016-02-29
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/29/关于梦想-关于现实/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/关于梦想-关于现实/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  <strong>一个醉酒的不眠夜,想和自己说说话.</strong><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/29/关于梦想-关于现实/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/16/Android开发笔记/" itemprop="url">
-                  Android开发笔记1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-16T23:50:24+08:00" content="2016-01-16">
-              2016-01-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/16/Android开发笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/16/Android开发笔记/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="u8111_u6B8B_u9519_u8BEF1"><a href="#u8111_u6B8B_u9519_u8BEF1" class="headerlink" title="脑残错误1"></a>脑残错误1</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String[] tempCity=<span class="keyword">new</span> String[]&#123;<span class="string">"北京"</span>, <span class="string">"天津"</span>, <span class="string">"上海"</span>, <span class="string">"广州"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CityChoosePopupWindow</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context,</span><br><span class="line">                LayoutInflater.from(context).inflate(R.layout.popupwindow_citychoose, <span class="keyword">null</span>),</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT,</span><br><span class="line">                ViewGroup.LayoutParams.MATCH_PARENT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initViews</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">        Log.d(mLogName,tempCity[<span class="number">0</span>]);<span class="comment">//提示tempCity为null</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BasePopupWindow</span><span class="params">(Context context,View contentView, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(contentView, width, height, <span class="keyword">true</span>);</span><br><span class="line">    mContentView = contentView;</span><br><span class="line">    mContext=context;</span><br><span class="line">    setBackgroundDrawable(<span class="keyword">new</span> BitmapDrawable());</span><br><span class="line">    initViews();</span><br><span class="line">    initEvents();</span><br><span class="line">    init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>很简单的错误,但是当时蒙B了还是找了一阵子,后来才看到,这个class[CityChoosePopupwindow]是继承于自己的BasePopupwindow,进入CityChoosePopupwindow的构造方法,然后进入父类的构造方法,然后构造方法调用了<strong>抽象方法:initViews()</strong>,而这个时候子类全局变量还没有初始化</p>
-</blockquote>
-<h2 id="Java_u521D_u59CB_u5316_u987A_u5E8F_uFF08_u8F6C_u6765_u7684_uFF09"><a href="#Java_u521D_u59CB_u5316_u987A_u5E8F_uFF08_u8F6C_u6765_u7684_uFF09" class="headerlink" title="Java初始化顺序（转来的）"></a>Java初始化顺序（转来的）</h2><blockquote>
-<p>1在new B一个实例时首先要进行类的装载。（类只有在使用New调用创建的时候才会被java类装载器装入）<br>2，在装载类时，先装载父类A，再装载子类B<br>3，装载父类A后，完成静态动作（包括静态代码和变量，它们的级别是相同的，安装代码中出现的顺序初始化）<br>4，装载子类B后，完成静态动作<br><em>类装载完成，开始进行实例化</em><br>1，在实例化子类B时，先要实例化父类A<br>2，实例化父类A时，先成员实例化（非静态代码）<br>3，父类A的构造方法<br>4，子类B的成员实例化（非静态代码）<br>5，子类B的构造方法</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/16/Android开发笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1534,7 +1562,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1542,7 +1570,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1551,7 +1579,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="生活," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -57,20 +57,25 @@
 
 
 
-<meta name="description" content="这是我的博客的第一篇文章.
-  很久之前就有写博客的想法了,不过总是因为各种原因没有去做。记得大约在去年，还在CSDN和开源中国之间徘徊过,后来手机用简书的时候,也考虑过在简书上开一个自己的博客,可惜这些想法最后都没有结果。  最后之所以准备开这个博客，一方面是好朋友给我推荐了Github+Hexo，二来是静态博客最近确实很火。加上新的一年到了，也准备给自己定点计划和目标，所以才强迫自己开了这个博">
+<meta name="description" content="一.基础篇1.编码:Python3中,字符串是以Unicode编码的,支持多语言的.单个字符的编码解码,有方法ord()和chr()
+12ord(&apos;A&apos;)  65chr(65)   A
+2.str和bytes的转换:&amp;#39;ABC&amp;#39;是str,b&amp;#39;ABC&amp;#39;是bytes.str -&amp;gt; bytes encode()bytes -&amp;gt; str decode()
+3.le">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前言">
-<meta property="og:url" content="http://yoursite.com/2016/01/15/前言/index.html">
+<meta property="og:title" content="Python学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/13/Python学习笔记/index.html">
 <meta property="og:site_name" content="山上">
-<meta property="og:description" content="这是我的博客的第一篇文章.
-  很久之前就有写博客的想法了,不过总是因为各种原因没有去做。记得大约在去年，还在CSDN和开源中国之间徘徊过,后来手机用简书的时候,也考虑过在简书上开一个自己的博客,可惜这些想法最后都没有结果。  最后之所以准备开这个博客，一方面是好朋友给我推荐了Github+Hexo，二来是静态博客最近确实很火。加上新的一年到了，也准备给自己定点计划和目标，所以才强迫自己开了这个博">
-<meta property="og:image" content="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png">
-<meta property="og:updated_time" content="2016-03-30T13:43:12.000Z">
+<meta property="og:description" content="一.基础篇1.编码:Python3中,字符串是以Unicode编码的,支持多语言的.单个字符的编码解码,有方法ord()和chr()
+12ord(&apos;A&apos;)  65chr(65)   A
+2.str和bytes的转换:&amp;#39;ABC&amp;#39;是str,b&amp;#39;ABC&amp;#39;是bytes.str -&amp;gt; bytes encode()bytes -&amp;gt; str decode()
+3.le">
+<meta property="og:updated_time" content="2017-07-15T03:16:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前言">
-<meta name="twitter:description" content="这是我的博客的第一篇文章.
-  很久之前就有写博客的想法了,不过总是因为各种原因没有去做。记得大约在去年，还在CSDN和开源中国之间徘徊过,后来手机用简书的时候,也考虑过在简书上开一个自己的博客,可惜这些想法最后都没有结果。  最后之所以准备开这个博客，一方面是好朋友给我推荐了Github+Hexo，二来是静态博客最近确实很火。加上新的一年到了，也准备给自己定点计划和目标，所以才强迫自己开了这个博">
+<meta name="twitter:title" content="Python学习笔记">
+<meta name="twitter:description" content="一.基础篇1.编码:Python3中,字符串是以Unicode编码的,支持多语言的.单个字符的编码解码,有方法ord()和chr()
+12ord(&apos;A&apos;)  65chr(65)   A
+2.str和bytes的转换:&amp;#39;ABC&amp;#39;是str,b&amp;#39;ABC&amp;#39;是bytes.str -&amp;gt; bytes encode()bytes -&amp;gt; str decode()
+3.le">
 
 
 
@@ -88,7 +93,7 @@
   };
 </script>
 
-  <title> 前言 | 山上 </title>
+  <title> Python学习笔记 | 山上 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +263,7 @@
             
             
               
-                前言
+                Python学习笔记
               
             
           </h1>
@@ -270,8 +275,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-15T15:38:47+08:00" content="2016-01-15">
-              2016-01-15
+            <time itemprop="dateCreated" datetime="2017-07-13T00:58:16+08:00" content="2017-07-13">
+              2017-07-13
             </time>
           </span>
 
@@ -284,8 +289,20 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
                   </a>
                 </span>
 
@@ -300,8 +317,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/15/前言/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/15/前言/" itemprop="commentsCount"></span>
+                <a href="/2017/07/13/Python学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/13/Python学习笔记/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -323,10 +340,26 @@
       
 
       
-        <p>  <strong>这是我的博客的第一篇文章.</strong></p>
-<p>  很久之前就有写博客的想法了,不过总是因为各种原因没有去做。记得大约在去年，还在CSDN和开源中国之间徘徊过,后来手机用简书的时候,也考虑过在简书上开一个自己的博客,可惜这些想法最后都没有结果。<br>  最后之所以准备开这个博客，一方面是好朋友给我推荐了Github+Hexo，二来是静态博客最近确实很火。加上新的一年到了，也准备给自己定点计划和目标，所以才强迫自己开了这个博客。</p>
-<p>  至于www.3toptop.top这个域名，本来是想买个自己喜欢的词缀的顶级域名的，可惜都被抢注了，然后脑洞打开，就选了这个域名…然后还起了这个很中二的名字（做数据统计，域名解析的时候，都是叫3-Top），然后就因为当时的主题的样式的标题上下有两道横线，然后感觉不喜欢，就被抛弃了。。。。。</p>
-<p>  <img src="http://7xpw3n.com1.z0.glb.clouddn.com/1/1.png" alt="被嫌弃的双横线"><br>  虽然俺是程序猿，但程序猿也是有生活的好吗？加上这个博客应该是不会被搜索引擎收到的，所以我想记录的东西都可以放到这里，技术分享，学习笔记，生活经历，逗比玩法什么的，都会尝试去写。</p>
+        <h2 id="u4E00-_u57FA_u7840_u7BC7"><a href="#u4E00-_u57FA_u7840_u7BC7" class="headerlink" title="一.基础篇"></a>一.基础篇</h2><h3 id="1-_u7F16_u7801_3A"><a href="#1-_u7F16_u7801_3A" class="headerlink" title="1.编码:"></a>1.编码:</h3><p>Python3中,字符串是以Unicode编码的,支持多语言的.<br>单个字符的编码解码,有方法<code>ord()</code>和<code>chr()</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">ord</span><span class="params">(<span class="string">'A'</span>)</span></span>  <span class="number">65</span></span><br><span class="line"><span class="function"><span class="title">chr</span><span class="params">(<span class="number">65</span>)</span></span>   A</span><br></pre></td></tr></table></figure>
+<h3 id="2-str_u548Cbytes_u7684_u8F6C_u6362_3A"><a href="#2-str_u548Cbytes_u7684_u8F6C_u6362_3A" class="headerlink" title="2.str和bytes的转换:"></a>2.str和bytes的转换:</h3><p><code>&#39;ABC&#39;</code>是str,<code>b&#39;ABC&#39;</code>是bytes.<br>str -&gt; bytes encode()<br>bytes -&gt; str decode()</p>
+<h3 id="3-len_28_29_u65B9_u6CD5_3A"><a href="#3-len_28_29_u65B9_u6CD5_3A" class="headerlink" title="3.len()方法:"></a>3.len()方法:</h3><p>可以得到str包含多少个字符,或者计算bytes的字节数<br><code># -*- coding: utf-8 -*-</code>可以解释器用utf-8编码读取,文本存储的时候用UTF-8 without BOM编码</p>
+<h3 id="4-list_u548Ctuple"><a href="#4-list_u548Ctuple" class="headerlink" title="4.list和tuple"></a>4.list和tuple</h3><p><strong>list</strong>,是一种有序的集合:tbl=[1,2,3,4,5]</p>
+<ul>
+<li>末尾追加:tbl.append(6)</li>
+<li>插入到指定位置:tbl.insert(1,11)</li>
+<li>删除末尾:tbl.pop()</li>
+<li>删除指定位置tbl.pop(1)</li>
+</ul>
+<p><strong>tuple</strong>,没法修改的列表:t = (1,2,3)</p>
+<p><strong>dict</strong>,字典:d={‘wang’:12,’li’:22}<br>获取wang的分数 d[‘wang’],如果传入的key不存在,会报错,解决方法:</p>
+<ol>
+<li>用<code>in</code>判断key是否存在 ‘wang’ in d;</li>
+<li>用get方法d.get(‘wang’,-1),可以设置默认返回值</li>
+</ol>
+<p>dict中key要保证是不可边的,在python中,字符串,整数等是不可变的<br>dict中删除一个key:d.pop(‘wang’)</p>
+<p>g<br><strong>set</strong>,set和dict类似,也是一组可以的集合,但是不存储value,而且key不能重复<br>s=set([1,2,3])</p>
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><p>定义一个function:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">funcName</span><span class="params">(x,y=<span class="number">2</span>,z=<span class="number">3</span>)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> x * y * z</span><br><span class="line"><span class="comment">#方法调用</span></span><br><span class="line">a=funcName(<span class="number">1</span>)</span><br><span class="line">b=funcName(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">c=funcName(<span class="number">1</span>,z=<span class="number">1</span>)</span><br><span class="line">print(<span class="string">'%d-%d-%d'</span>%(a,b,c))</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -341,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/生活/" rel="tag">#生活</a>
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -350,13 +383,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/07/12/mac搭建python环境/" rel="next" title="mac搭建python环境">
+                <i class="fa fa-chevron-left"></i> mac搭建python环境
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/16/Android开发笔记/" rel="prev" title="Android开发笔记1">
-                Android开发笔记1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -371,10 +404,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/15/前言/"
-     data-title="前言"
+        <div class="ds-share flat" data-thread-key="2017/07/13/Python学习笔记/"
+     data-title="Python学习笔记"
      data-content=""
-     data-url="http://yoursite.com/2016/01/15/前言/">
+     data-url="http://yoursite.com/2017/07/13/Python学习笔记/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -401,8 +434,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/15/前言/"
-           data-title="前言" data-url="http://yoursite.com/2016/01/15/前言/">
+      <div class="ds-thread" data-thread-key="2017/07/13/Python学习笔记/"
+           data-title="Python学习笔记" data-url="http://yoursite.com/2017/07/13/Python学习笔记/">
       </div>
     
   </div>
@@ -515,7 +548,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E00-_u57FA_u7840_u7BC7"><span class="nav-number">1.</span> <span class="nav-text">一.基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_u7F16_u7801_3A"><span class="nav-number">1.1.</span> <span class="nav-text">1.编码:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-str_u548Cbytes_u7684_u8F6C_u6362_3A"><span class="nav-number">1.2.</span> <span class="nav-text">2.str和bytes的转换:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-len_28_29_u65B9_u6CD5_3A"><span class="nav-number">1.3.</span> <span class="nav-text">3.len()方法:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-list_u548Ctuple"><span class="nav-number">1.4.</span> <span class="nav-text">4.list和tuple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">1.5.</span> <span class="nav-text">function</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

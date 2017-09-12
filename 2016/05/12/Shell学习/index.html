@@ -79,7 +79,7 @@ sh:是Unix标准默认的shell(包括macox)
 简单例子test.sh12#!/bin/bashecho &quot;Hello World&quot;
 
 chmod +x ./test.sh  #使脚本具有执行权限.">
-<meta property="og:updated_time" content="2016-06-13T09:07:23.000Z">
+<meta property="og:updated_time" content="2017-07-15T07:02:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell学习">
 <meta name="twitter:description" content="Shell既是一种命令语言,有是一种程序设计语言.它可以交互解释用户输入的命令,也可以有各种变量,参数,控制结构.
@@ -751,14 +751,51 @@ this number is 4 6
 </code></pre><p>如果不希望文件内容被覆盖，可以使用 &gt;&gt; 追加到文件末尾，例如：</p>
 <p>输入重定向:</p>
 <pre><code>command &lt; file
-</code></pre><h4 id="u6587_u4EF6_u5305_u542B"><a href="#u6587_u4EF6_u5305_u542B" class="headerlink" title="文件包含"></a>文件包含</h4><p>a.sh:</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">url=<span class="value"><span class="string">"http://3toptop.top"</span></span></span></span><br></pre></td></tr></table></figure>
-<p>b.sh:</p>
-<p>#!/bin/bash<br>. ./a.sh<br>echo $url</p>
-<p>执行:</p>
-<pre><code>chmod +x b.sh
-./b.sh
-</code></pre><p>参考文档:<a href="http://c.biancheng.net/" target="_blank" rel="external">C语言中文网</a></p>
+</code></pre><h4 id="u6587_u4EF6_u5305_u542B"><a href="#u6587_u4EF6_u5305_u542B" class="headerlink" title="文件包含"></a>文件包含</h4><p>a.sh:<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">url=<span class="value"><span class="string">"http://3toptop.top"</span></span></span></span><br></pre></td></tr></table></figure></p>
+<p>b.sh:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">. ./a.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$url</span></span><br></pre></td></tr></table></figure></p>
+<p>执行:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x <span class="tag">b</span><span class="class">.sh</span></span><br><span class="line">./<span class="tag">b</span>.sh</span><br></pre></td></tr></table></figure></p>
+<h4 id="shell_u901A_u914D_u7B26_28wildcard__29"><a href="#shell_u901A_u914D_u7B26_28wildcard__29" class="headerlink" title="shell通配符(wildcard    )"></a>shell通配符(wildcard    )</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配 0 或多个字符</td>
+<td>[ $a -eq $b ] a*b  a与b之间可以有任意长度的任意字符, 也可以一个也没有, 如aabcb, axyzb, a012b, ab。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配任意一个字符</td>
+<td>[ $a -ne $b ] a?b  a与b之间必须也只能有一个字符, 可以是任意字符, 如aab, abb, acb, a0b。。</td>
+</tr>
+<tr>
+<td>[list]</td>
+<td>匹配 list 中的任意单一字符</td>
+<td>[ $a -gt $b ] a[xyz]b   a与b之间必须也只能有一个字符, 但只能是 x 或 y 或 z, 如: axb, ayb, azb。</td>
+</tr>
+<tr>
+<td>[!list]</td>
+<td>匹配 除list 中的任意单一字符</td>
+<td>[ $a -lt $b ] a[!0-9]b  a与b之间必须也只能有一个字符, 但不能是阿拉伯数字, 如axb, aab, a-b。</td>
+</tr>
+<tr>
+<td>[c1-c2]</td>
+<td>匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]</td>
+<td>[ $a -ge $b ] a[0-9]b  0与9之间必须也只能有一个字符 如a0b, a1b… a9b。</td>
+</tr>
+<tr>
+<td>{string1,string2,…}</td>
+<td>匹配 sring1 或 string2 (或更多)其一字符串</td>
+<td>a{abc,xyz,123}b    a与b之间只能是abc或xyz或123这三个字符串之一。</td>
+</tr>
+</tbody>
+</table>
+<p>参考文档:<a href="http://c.biancheng.net/" target="_blank" rel="external">C语言中文网</a></p>
 
       
     </div>
@@ -883,7 +920,7 @@ this number is 4 6
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -891,7 +928,7 @@ this number is 4 6
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -900,7 +937,7 @@ this number is 4 6
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -951,7 +988,7 @@ this number is 4 6
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7C7B_u578B"><span class="nav-number">1.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B80_u5355_u4F8B_u5B50"><span class="nav-number">2.</span> <span class="nav-text">简单例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B66_u4E60"><span class="nav-number">3.</span> <span class="nav-text">学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#read_u5173_u952E_u5B57"><span class="nav-number">3.1.</span> <span class="nav-text">read关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u53D8_u91CF"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B9A_u4E49_u53D8_u91CF"><span class="nav-number">3.2.1.</span> <span class="nav-text">定义变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u4F7F_u7528_u53D8_u91CF"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u7279_u6B8A_u7684_u53D8_u91CF"><span class="nav-number">3.2.3.</span> <span class="nav-text">特殊的变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24*__u548C__24@__u7684_u533A_u522B"><span class="nav-number">3.2.4.</span> <span class="nav-text">$* 和 $@ 的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u547D_u4EE4_u66FF_u6362"><span class="nav-number">3.2.5.</span> <span class="nav-text">命令替换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u53D8_u91CF_u66FF_u6362"><span class="nav-number">3.2.6.</span> <span class="nav-text">变量替换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8FD0_u7B97"><span class="nav-number">3.3.</span> <span class="nav-text">运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u7B97_u672F_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5173_u7CFB_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.2.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5E03_u5C14_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.3.</span> <span class="nav-text">布尔运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B57_u7B26_u4E32_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.4.</span> <span class="nav-text">字符串运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6587_u4EF6_u6D4B_u8BD5_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.5.</span> <span class="nav-text">文件测试运算符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B57_u7B26_u4E32"><span class="nav-number">3.4.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6570_u7EC4"><span class="nav-number">3.5.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B9A_u4E49_u6570_u7EC4"><span class="nav-number">3.5.1.</span> <span class="nav-text">定义数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u8BFB_u53D6_u6570_u7EC4"><span class="nav-number">3.5.2.</span> <span class="nav-text">读取数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6570_u7EC4_u957F_u5EA6_u7684_u83B7_u53D6"><span class="nav-number">3.5.3.</span> <span class="nav-text">数组长度的获取</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#printf"><span class="nav-number">3.6.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if"><span class="nav-number">3.7.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case"><span class="nav-number">3.8.</span> <span class="nav-text">case</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for_u5FAA_u73AF"><span class="nav-number">3.9.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while"><span class="nav-number">3.10.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#util"><span class="nav-number">3.11.</span> <span class="nav-text">util</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#break_u548Ccontinue"><span class="nav-number">3.12.</span> <span class="nav-text">break和continue</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#break_3A"><span class="nav-number">3.12.1.</span> <span class="nav-text">break:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#continue"><span class="nav-number">3.12.2.</span> <span class="nav-text">continue</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u51FD_u6570"><span class="nav-number">3.13.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8F93_u51FA_u91CD_u5B9A_u5411"><span class="nav-number">3.14.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6587_u4EF6_u5305_u542B"><span class="nav-number">3.15.</span> <span class="nav-text">文件包含</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7C7B_u578B"><span class="nav-number">1.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B80_u5355_u4F8B_u5B50"><span class="nav-number">2.</span> <span class="nav-text">简单例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B66_u4E60"><span class="nav-number">3.</span> <span class="nav-text">学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#read_u5173_u952E_u5B57"><span class="nav-number">3.1.</span> <span class="nav-text">read关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u53D8_u91CF"><span class="nav-number">3.2.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B9A_u4E49_u53D8_u91CF"><span class="nav-number">3.2.1.</span> <span class="nav-text">定义变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u4F7F_u7528_u53D8_u91CF"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u7279_u6B8A_u7684_u53D8_u91CF"><span class="nav-number">3.2.3.</span> <span class="nav-text">特殊的变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#24*__u548C__24@__u7684_u533A_u522B"><span class="nav-number">3.2.4.</span> <span class="nav-text">$* 和 $@ 的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u547D_u4EE4_u66FF_u6362"><span class="nav-number">3.2.5.</span> <span class="nav-text">命令替换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u53D8_u91CF_u66FF_u6362"><span class="nav-number">3.2.6.</span> <span class="nav-text">变量替换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8FD0_u7B97"><span class="nav-number">3.3.</span> <span class="nav-text">运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u7B97_u672F_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5173_u7CFB_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.2.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5E03_u5C14_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.3.</span> <span class="nav-text">布尔运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B57_u7B26_u4E32_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.4.</span> <span class="nav-text">字符串运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6587_u4EF6_u6D4B_u8BD5_u8FD0_u7B97_u7B26"><span class="nav-number">3.3.5.</span> <span class="nav-text">文件测试运算符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B57_u7B26_u4E32"><span class="nav-number">3.4.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6570_u7EC4"><span class="nav-number">3.5.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B9A_u4E49_u6570_u7EC4"><span class="nav-number">3.5.1.</span> <span class="nav-text">定义数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u8BFB_u53D6_u6570_u7EC4"><span class="nav-number">3.5.2.</span> <span class="nav-text">读取数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6570_u7EC4_u957F_u5EA6_u7684_u83B7_u53D6"><span class="nav-number">3.5.3.</span> <span class="nav-text">数组长度的获取</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#printf"><span class="nav-number">3.6.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if"><span class="nav-number">3.7.</span> <span class="nav-text">if</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case"><span class="nav-number">3.8.</span> <span class="nav-text">case</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for_u5FAA_u73AF"><span class="nav-number">3.9.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while"><span class="nav-number">3.10.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#util"><span class="nav-number">3.11.</span> <span class="nav-text">util</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#break_u548Ccontinue"><span class="nav-number">3.12.</span> <span class="nav-text">break和continue</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#break_3A"><span class="nav-number">3.12.1.</span> <span class="nav-text">break:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#continue"><span class="nav-number">3.12.2.</span> <span class="nav-text">continue</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u51FD_u6570"><span class="nav-number">3.13.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8F93_u51FA_u91CD_u5B9A_u5411"><span class="nav-number">3.14.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6587_u4EF6_u5305_u542B"><span class="nav-number">3.15.</span> <span class="nav-text">文件包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell_u901A_u914D_u7B26_28wildcard__29"><span class="nav-number">3.16.</span> <span class="nav-text">shell通配符(wildcard    )</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
